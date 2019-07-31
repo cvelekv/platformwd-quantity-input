@@ -1,28 +1,54 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <Header class="marginBottom"/>
+   <QuantityInput 
+   v-bind:value="value" 
+   v-bind:selectMin="selectMin" 
+   v-bind:selectMax="selectMax" 
+   v-on:new-value-selected="customValueInputted"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import QuantityInput from "./components/QuantityInput";
+import Header from "./components/Header";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    HelloWorld
+    QuantityInput,
+    Header
+  },
+  data() {
+    return {
+      value: 8,
+      selectMin: 4,
+      selectMax: 10
+    };
+  },
+  methods: {
+    customValueInputted(value) {
+      // eslint-disable-next-line
+      console.log(`Inputted value is: ${value}`);
+    }
   }
-}
+};
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  left: 10%;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.4;
+}
+.marginBottom {
+  margin-bottom: 2%;
 }
 </style>
